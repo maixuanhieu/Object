@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xây dựng lớp mô tả hình chữ nhật</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="1368px" height="768px" style="border:1px solid #d3d3d3 ;"></canvas>
+    <script>
+        function check(message) {
+            let number = 0;
+            do {
+                number = Number(prompt(`${message}:`));
+            }
+            while (isNaN(number))
+            return number;
+
+        }
+        let a = check("Nhập vào chiều dài: ");
+        let b = check("Nhập vào chiều rộng: ");
+
+        let Rectangle = function (a, b) {
+            this.width = a;
+            this.height = b;
+            this.getArea = function () {
+                return a * b;
+            }
+            this.getPerimeter = function () {
+                return (a + b) * 2;
+            }
+        }
+        let rectangle = new Rectangle(a, b);
+        let area = rectangle.getArea();
+        let perimeter = rectangle.getPerimeter();
+        alert("area: " + area + "; perimeter: " + perimeter);
+
+        var rectangle1 = document.getElementById("myCanvas");
+        var ctx = rectangle1.getContext("2d");
+        ctx.moveTo(0, 0);
+        ctx.lineTo(a, 0);
+        ctx.lineTo(a, b);
+        ctx.lineTo(0, b);
+        ctx.lineTo(0, 0);
+        ctx.stroke();
+    </script>
+</body>
+
+</html>
